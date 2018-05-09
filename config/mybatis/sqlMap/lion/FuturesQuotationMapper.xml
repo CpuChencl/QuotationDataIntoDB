@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lion.db.dao.FuturesQuotationDao">
+  
+	<!-- 
+	<result column="OBJECT_ID" property="id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="COMMENT_LEVEL" property="level" jdbcType="BIGINT" javaType="java.lang.Long"/>
+    <result column="COMMENT_CONTENT" property="content" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+    <result column="CHAR_CREATE_TIME" property="createTime" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+    <result column="S_INFO_NAME" property="stockName" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+    <result column="S_INFO_NAME" property="stockName" jdbcType="DATE" javaType="java.sql.Date"/>
+     -->
+  <resultMap type="com.lion.db.bean.FuturesQuotation" id="fq" >
+	<result column="id" property="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
+	<result column="currency_no" property="currencyNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="date_time_stamp" property="dateTimeStamp" jdbcType="BIGINT" javaType="java.lang.Long"/>
+	<result column="pre_closing_price" property="preClosingPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="pre_settle_price" property="preSettlePrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="pre_position_qty" property="prePositionQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="opening_price" property="openingPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="last_price" property="lastPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="high_price" property="highPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="low_price" property="lowPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="his_high_price" property="hisHighPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="his_low_price" property="hisLowPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="limit_up_price" property="limitUpPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="limit_down_price" property="limitDownPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="total_qty" property="totalQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="total_turnover" property="totalTurnover" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="position_qty" property="positionQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="average_price" property="averagePrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="closing_price" property="closingPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="settle_price" property="settlePrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="last_qty" property="lastQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_price1" property="bidPrice1" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_price2" property="bidPrice2" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_price3" property="bidPrice3" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_price4" property="bidPrice4" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_price5" property="bidPrice5" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_qty1" property="bidQty1" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_qty2" property="bidQty2" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_qty3" property="bidQty3" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_qty4" property="bidQty4" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="bid_qty5" property="bidQty5" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_price1" property="askPrice1" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_price2" property="askPrice2" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_price3" property="askPrice3" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_price4" property="askPrice4" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_price5" property="askPrice5" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_qty1" property="askQty1" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_qty2" property="askQty2" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_qty3" property="askQty3" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_qty4" property="askQty4" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="ask_qty5" property="askQty5" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="implied_bid_price" property="impliedBidPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="implied_bid_qty" property="impliedBidQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="implied_ask_price" property="impliedAskPrice" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="implied_ask_qty" property="impliedAskQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="pre_delta" property="preDelta" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="curr_delta" property="currDelta" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="inside_qty" property="insideQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="outside_qty" property="outsideQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="turnover_rate" property="turnoverRate" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="five_day_avg_qty" property="fiveDayAvgQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="price_earnings_ratio" property="priceEarningsRatio" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="total_value" property="totalValue" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="negotiable_value" property="negotiableValue" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="position_trend" property="positionTrend" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="change_speed" property="changeSpeed" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="change_rate" property="changeRate" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="change_value" property="changeValue" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="swing" property="swing" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="total_bid_qty" property="totalBidQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="total_ask_qty" property="totalAskQty" jdbcType="DECIMAL" javaType="java.lang.Double"/>
+	<result column="contract_no1" property="contractNo1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="contract_strike_price1" property="contractStrikePrice1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="contract_no2" property="contractNo2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="contract_strike_price2" property="contractStrikePrice2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="contract_exchange_no" property="contractExchangeNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="contract_commodity_type" property="contractCommodityType" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+	<result column="contract_commodity_no" property="contractCommodityNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_no1" property="underlyContractNo1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_strike_price1" property="underlyContractStrikePrice1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_no2" property="underlyContractNo2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_strike_price2" property="underlyContractStrikePrice2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_exchange_no" property="underlyContractExchangeNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	<result column="underly_contract_commodity_type" property="underlyContractCommodityType" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+	<result column="underly_contract_commodity_no" property="underlyContractCommodityNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  </resultMap>
+  
+  <sql id="fields">
+	id,currency_no,date_time_stamp,pre_closing_price,pre_settle_price,pre_position_qty,opening_price,last_price,high_price,low_price
+	,his_high_price,his_low_price,limit_up_price,limit_down_price,total_qty,total_turnover,position_qty,average_price,closing_price
+	,settle_price,last_qty,bid_price1,bid_price2,bid_price3,bid_price4,bid_price5,bid_qty1,bid_qty2,bid_qty3,bid_qty4,bid_qty5,ask_price1
+	,ask_price2,ask_price3,ask_price4,ask_price5,ask_qty1,ask_qty2,ask_qty3,ask_qty4,ask_qty5,implied_bid_price,implied_bid_qty,implied_ask_price
+	,implied_ask_qty,pre_delta,curr_delta,inside_qty,outside_qty,turnover_rate,five_day_avg_qty,price_earnings_ratio,total_value,negotiable_value
+	,position_trend,change_speed,change_rate,change_value,swing,total_bid_qty,total_ask_qty,contract_no1,contract_strike_price1,contract_no2
+	,contract_strike_price2,contract_exchange_no,contract_commodity_type,contract_commodity_no,underly_contract_no1,underly_contract_strike_price1
+	,underly_contract_no2,underly_contract_strike_price2,underly_contract_exchange_no,underly_contract_commodity_type,underly_contract_commodity_no
+  </sql>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+  	insert into lb_futures_quotation (currency_no,date_time_stamp,pre_closing_price,pre_settle_price,pre_position_qty,opening_price,last_price,high_price,low_price
+	,his_high_price,his_low_price,limit_up_price,limit_down_price,total_qty,total_turnover,position_qty,average_price,closing_price
+	,settle_price,last_qty,bid_price1,bid_price2,bid_price3,bid_price4,bid_price5,bid_qty1,bid_qty2,bid_qty3,bid_qty4,bid_qty5,ask_price1
+	,ask_price2,ask_price3,ask_price4,ask_price5,ask_qty1,ask_qty2,ask_qty3,ask_qty4,ask_qty5,implied_bid_price,implied_bid_qty,implied_ask_price
+	,implied_ask_qty,pre_delta,curr_delta,inside_qty,outside_qty,turnover_rate,five_day_avg_qty,price_earnings_ratio,total_value,negotiable_value
+	,position_trend,change_speed,change_rate,change_value,swing,total_bid_qty,total_ask_qty,contract_no1,contract_strike_price1,contract_no2
+	,contract_strike_price2,contract_exchange_no,contract_commodity_type,contract_commodity_no,underly_contract_no1,underly_contract_strike_price1
+	,underly_contract_no2,underly_contract_strike_price2,underly_contract_exchange_no,underly_contract_commodity_type,underly_contract_commodity_no)
+	 values 
+	 (#{currencyNo,jdbcType=VARCHAR}, #{dateTimeStamp,jdbcType=BIGINT}, #{preClosingPrice,jdbcType=DECIMAL}, #{preSettlePrice,jdbcType=DECIMAL}
+	 , #{prePositionQty,jdbcType=DECIMAL}, #{openingPrice,jdbcType=DECIMAL}, #{lastPrice,jdbcType=DECIMAL}, #{highPrice,jdbcType=DECIMAL}
+	 , #{lowPrice,jdbcType=DECIMAL}, #{hisHighPrice,jdbcType=DECIMAL}, #{hisLowPrice,jdbcType=DECIMAL}, #{limitUpPrice,jdbcType=DECIMAL}
+	 , #{limitDownPrice,jdbcType=DECIMAL}, #{totalQty,jdbcType=DECIMAL}, #{totalTurnover,jdbcType=DECIMAL}, #{positionQty,jdbcType=DECIMAL}
+	 , #{averagePrice,jdbcType=DECIMAL}, #{closingPrice,jdbcType=DECIMAL}, #{settlePrice,jdbcType=DECIMAL}, #{lastQty,jdbcType=DECIMAL}
+	 , #{bidPrice1,jdbcType=DECIMAL}, #{bidPrice2,jdbcType=DECIMAL}, #{bidPrice3,jdbcType=DECIMAL}, #{bidPrice4,jdbcType=DECIMAL}
+	 , #{bidPrice5,jdbcType=DECIMAL}, #{bidQty1,jdbcType=DECIMAL}, #{bidQty2,jdbcType=DECIMAL}, #{bidQty3,jdbcType=DECIMAL}
+	 , #{bidQty4,jdbcType=DECIMAL}, #{bidQty5,jdbcType=DECIMAL}, #{askPrice1,jdbcType=DECIMAL}, #{askPrice2,jdbcType=DECIMAL}
+	 , #{askPrice3,jdbcType=DECIMAL}, #{askPrice4,jdbcType=DECIMAL}, #{askPrice5,jdbcType=DECIMAL}, #{askQty1,jdbcType=DECIMAL}
+	 , #{askQty2,jdbcType=DECIMAL}, #{askQty3,jdbcType=DECIMAL}, #{askQty4,jdbcType=DECIMAL}, #{askQty5,jdbcType=DECIMAL}
+	 , #{impliedBidPrice,jdbcType=DECIMAL}, #{impliedBidQty,jdbcType=DECIMAL}, #{impliedAskPrice,jdbcType=DECIMAL}, #{impliedAskQty,jdbcType=DECIMAL}
+	 , #{preDelta,jdbcType=DECIMAL}, #{currDelta,jdbcType=DECIMAL}, #{insideQty,jdbcType=DECIMAL}, #{outsideQty,jdbcType=DECIMAL}
+	 , #{turnoverRate,jdbcType=DECIMAL}, #{5DAvgQty,jdbcType=DECIMAL}, #{pERatio,jdbcType=DECIMAL}, #{totalValue,jdbcType=DECIMAL}
+	 , #{negotiableValue,jdbcType=DECIMAL}, #{positionTrend,jdbcType=DECIMAL}, #{changeSpeed,jdbcType=DECIMAL}, #{changeRate,jdbcType=DECIMAL}
+	 , #{changeValue,jdbcType=DECIMAL}, #{swing,jdbcType=DECIMAL}, #{totalBidQty,jdbcType=DECIMAL}, #{totalAskQty,jdbcType=DECIMAL}
+	 , #{Contract_ContractNo1,jdbcType=VARCHAR}, #{Contract_StrikePrice1,jdbcType=VARCHAR}, #{Contract_ContractNo2,jdbcType=VARCHAR}, #{Contract_StrikePrice2,jdbcType=VARCHAR}
+	 , #{Contract_ExchangeNo,jdbcType=VARCHAR}, #{Contract_CommodityType,jdbcType=INTEGER}, #{Contract_CommodityNo,jdbcType=VARCHAR}
+	 , #{UnderlyContract_ContractNo1,jdbcType=VARCHAR}, #{UnderlyContract_StrikePrice1,jdbcType=VARCHAR}, #{UnderlyContract_ContractNo2,jdbcType=VARCHAR}, #{UnderlyContract_StrikePrice2,jdbcType=VARCHAR}
+	 , #{UnderlyContract_ExchangeNo,jdbcType=VARCHAR}, #{UnderlyContract_CommodityType,jdbcType=INTEGER}, #{UnderlyContract_CommodityNo,jdbcType=VARCHAR})
+  </insert>
+</mapper>
